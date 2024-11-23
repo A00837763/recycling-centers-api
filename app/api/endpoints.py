@@ -6,7 +6,7 @@ from typing import List, Optional
 
 router = APIRouter()
 
-@router.get("/api/centers", response_model=List[RecyclingCenter])
+@router.get("/centers", response_model=List[RecyclingCenter])
 async def get_centers():
     with SessionLocal() as db:
         query = text("""
@@ -80,7 +80,7 @@ GROUP BY rc.center_id;
         ]
 
 
-@router.get("/api/centers/nearby")
+@router.get("/centers/nearby")
 async def get_nearby_centers(latitude: float, longitude: float, radius: float = 10.0):
     with SessionLocal() as db:
         query = text("""
@@ -187,7 +187,7 @@ async def get_nearby_centers(latitude: float, longitude: float, radius: float = 
         ]
 
 
-@router.get("/api/centers/search")
+@router.get("/centers/search")
 async def search_centers(
         q: Optional[str] = None,
         city: Optional[str] = None,
@@ -285,7 +285,7 @@ GROUP BY rc.center_id
         ]
 
 # Add single center endpoint
-@router.get("/api/centers/{center_id}")
+@router.get("/centers/{center_id}")
 async def get_center(center_id: int):
     with SessionLocal() as db:
         query = text("""
@@ -359,7 +359,7 @@ async def get_center(center_id: int):
         }
 
 
-@router.get("/api/waste-categories", response_model=List[dict])
+@router.get("/waste-categories", response_model=List[dict])
 async def get_waste_categories():
     with SessionLocal() as db:
         query = text("""
