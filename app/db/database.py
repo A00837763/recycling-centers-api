@@ -5,6 +5,16 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DATABASE_URL = f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
-engine = create_engine(DATABASE_URL)
+# Get database URL from environment variable
+DATABASE_URL = os.getenv('DATABASE_URL')
+
+# Create engine with proper SSL mode for Neon
+engine = create_engine(
+    DATABASE_URL,
+    pool_size=5,
+    max_overflow=10,
+    pool_timeout=30,
+    pool_recycle=1800
+)
+
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
