@@ -1,3 +1,4 @@
+# app/db/database.py should look like this:
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import os
@@ -5,10 +6,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Get database URL from environment variable
 DATABASE_URL = os.getenv('DATABASE_URL')
 
-# Create engine with proper SSL mode for Neon
 engine = create_engine(
     DATABASE_URL,
     pool_size=5,
