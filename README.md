@@ -107,6 +107,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 🔗 Links
 
-- [Production API](https://your-api-url.vercel.app)
+- [Production API](recycling-centers-api.vercel.app)
 - [API Documentation](https://your-api-url.vercel.app/docs)
-- [GitHub Repository](https://github.com/yourusername/recycling-centers-api)
+- [GitHub Repository](https://github.com/A00837763/recycling-centers-api)
